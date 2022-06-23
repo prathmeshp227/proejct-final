@@ -3,19 +3,27 @@ package com.example.demo.model;
 import javax.persistence.*;
 
 import java.util.List;
-import java.util.Set;
+
 
 @Entity
 @Table(name = "projects")
 public class Project {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="project_id")
-    private long project_id;
+    private long pid;
 
     @Column(name="name")
     private String name;
+    
+    @Column(name="daysleft")
+    private long daysleft;
+    
+   
+    
+    @Column(name="skills")
+    private String skills;
 
   
     @OneToMany
@@ -24,13 +32,16 @@ public class Project {
     
 
    
-    public Project(String name) {
-        this.name = name;
-    }
+  //  public Project(String name) {
+    //    this.name = name;
+    //}
 
-    public Project(long project_id, String name,List<Employee> employees) {
-       this.project_id = project_id;
+    public Project(long pid, String name,String skills,long daysleft,List<Employee> employees) {
+       this.pid = pid;
        this.name = name;
+       this.skills=skills;
+       this.daysleft=daysleft;
+    
        this.employees=employees;
     }
 
@@ -38,13 +49,23 @@ public class Project {
     }
 
     public long getProject_id() {
-        return project_id;
+        return pid;
     }
 
-    public void setProject_id(long project_id) {
-        this.project_id = project_id;
+    public void setProject_id(long pid) {
+        this.pid = pid;
     }
 
+    public long getDaysleft() {
+        return daysleft;
+    }
+
+    public void setDaysleft(long daysleft) {
+        this.daysleft = daysleft;
+    }
+    
+   
+    
     public String getName() {
         return name;
     }
@@ -52,6 +73,16 @@ public class Project {
     public void setName(String name) {
         this.name = name;
     }
+    
+    public String getSkills() {
+        return skills;
+    }
+
+    public void setSkills(String skills) {
+        this.skills = skills;
+    }
+    
+    
     public List<Employee> getEmployees() {
         return employees;
     }

@@ -1,6 +1,7 @@
 
 package com.example.demo.service;
 
+
 import com.example.demo.model.Employee;
 import com.example.demo.model.Project;
 import com.example.demo.repository.ProjectRepository;
@@ -13,6 +14,11 @@ import java.util.List;
 public class ProjectService {
     @Autowired
     private ProjectRepository projectRepository;
+    
+    
+	//public Project getbyPid(long pid ) {
+    	//return projectRepository.getReferenceById(pid);
+    //}
 
     
     public Project addProject(Project project){
@@ -21,5 +27,14 @@ public class ProjectService {
     public List<Project> getProjects(){
         return projectRepository.findAll();
     }
+    
+    public List<Project> getSkills(String skills){
+
+        return projectRepository.findBySkillsIgnoreCase(skills);
+    }
+    
+    public List<Project> getDaysleftLessThen (long daysleft) {
+		return projectRepository.findByDaysleftLessThanEqual(daysleft);
+	}
 }
 

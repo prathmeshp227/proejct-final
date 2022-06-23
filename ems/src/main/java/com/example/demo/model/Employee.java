@@ -5,7 +5,7 @@ package com.example.demo.model;
 
 import javax.persistence.*;
 
-import java.util.Set;
+
 
 @Entity
 @Table(name="employee")
@@ -13,7 +13,7 @@ public class Employee {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name="empname")
@@ -26,20 +26,20 @@ public class Employee {
     private String status;
     
     @Column(name="project_id")
-    private long project_id;
+    private long pid;
 
-
+    
 
     
     
     public Employee() {
     }
 
-    public Employee(String name, String lastname, String status,long project_id) {
+    public Employee(String name, String lastname, String status,long pid) {
         this.name = name;
         this.lastname = lastname;
         this.status = status;
-        this.project_id= project_id;
+        this.pid= pid;
     
 
     }
@@ -76,10 +76,10 @@ public class Employee {
         this.status = status;
     }
     public long getProject_id(){
-    	return project_id;
+    	return pid;
     }
-    public void setProject_id(long project_id) {
-    	this.project_id=project_id;
+    public void setProject_id(long pid) {
+    	this.pid=pid;
     }
 
  

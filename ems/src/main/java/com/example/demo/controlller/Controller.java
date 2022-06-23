@@ -30,6 +30,11 @@ public class Controller {
     public List<Employee> getEmployeeByName(@RequestParam String name){
         return employeeService.findEmployeeByName(name);
     }
+    
+    @GetMapping("/SearchByStatus{status}")
+    public List<Employee> getEmployeeByStatus(@RequestParam String status){
+        return employeeService.findEmployeeByStatus(status);
+    }
 
     @GetMapping("/employee")
     public List<Employee> getEmployeeAll(){
@@ -57,11 +62,13 @@ public class Controller {
         Employee editedEmployee=employeeService.updateEmployee(employee);
         return "User "+editedEmployee.getName()+" is Successfully Updated ";
     }
+    
 
+  
     
     @PostMapping("/addproject")
     public String addProject(@RequestBody Project project){
-        Project newProject=projectService.addProject(project);
+        projectService.addProject(project);
         return "Project is Successfully Created ";
     }
 
@@ -69,4 +76,21 @@ public class Controller {
     public List<Project> getProject(){
         return projectService.getProjects();
     }
+    
+    @GetMapping("/skills")
+    public List<Project> getSkills(String skills){
+        return projectService.getSkills(skills);
+    }
+    
+    @GetMapping("/days/lessthen")
+	public List<Project> getDaysleftLessThen (long daysleft) {
+		return projectService.getDaysleftLessThen(daysleft);
+	}
+    
+    
+    
+    //@GetMapping("/findbystatus/{status}")
+    //public List<Employee> findbystatus(@PathVariable String status){
+     //   return employeeService.findByStatus(status);
+    //}
 }
