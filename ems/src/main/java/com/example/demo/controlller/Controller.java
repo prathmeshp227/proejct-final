@@ -87,6 +87,10 @@ public class Controller {
 		return projectService.getDaysleftLessThen(daysleft);
 	}
     
+    @GetMapping("/notstaffed")
+	public List<Project> getProjectNotStaffed() {
+		return projectService.getProjectNotStaffed();
+	}
     
     
     //@GetMapping("/findbystatus/{status}")

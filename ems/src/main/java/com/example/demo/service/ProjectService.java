@@ -19,7 +19,7 @@ public class ProjectService {
 	//public Project getbyPid(long pid ) {
     	//return projectRepository.getReferenceById(pid);
     //}
-
+   
     
     public Project addProject(Project project){
         return projectRepository.save(project);
@@ -35,6 +35,14 @@ public class ProjectService {
     
     public List<Project> getDaysleftLessThen (long daysleft) {
 		return projectRepository.findByDaysleftLessThanEqual(daysleft);
+	}
+    
+    
+    
+    
+    
+    public List<Project> getProjectNotStaffed () {
+		return projectRepository.findByNotStaffedProject();
 	}
 }
 
